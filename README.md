@@ -7,7 +7,7 @@
 ---
 - [1장. 자바 8을 눈여겨봐야 하는 이유](Chapter1/자바8을눈여겨봐야하는이유.md)  
 - [2장. 동작 파라미터화 코드 전달하기](Chapter2/동작파라미터화코드전달하기.md)  
-- [3장. 람다 표현식](Chapter3/자바 8 인 액션 - 람다 표현식.md)
+- [3장. 람다 표현식](Chapter3/자바8인액션-람다표현식.md)
   - [Lazy Evaluation](Chapter3/Lambda_Lazy_Evaluation.md)  
 
 #### 2부 함수형 데이터 처리  
