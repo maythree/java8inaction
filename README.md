@@ -9,7 +9,7 @@
 - [2장. 동작 파라미터화 코드 전달하기](Chapter2/동작파라미터화코드전달하기.md)  
 - [3장. 람다 표현식](Chapter3/자바8인액션-람다표현식.md)
   - [Lazy Evaluation](Chapter3/Lambda_Lazy_Evaluation.md)  
-  - [Lambda Variable Test](Chpater3/Lambda_Variable_Test.md)
+  - [Lambda Variable Test](Chapter3/Lambda_Variable_Test.md)
 
 #### 2부 함수형 데이터 처리  
 ---

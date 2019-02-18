@@ -77,9 +77,9 @@ public class Main {
 }
 ~~~
 List로 하였을 경우, 지역변수는 "Variable 'localVar' might not have been initialized" 오류 발생   
-인스턴스 변수는 "Non-static field 'instanceVar' cannot be referenced from a static context" 오류 발생
-
-###결  론
+인스턴스 변수는 "Non-static field 'instanceVar' cannot be referenced from a static context" 오류 발생  
+  
+### 결  론
 지역변수와 매개변수의 경우 람다 내에서는 final로 간주되어 수정 시 오류 발생,
 단 ReferenceType의 경우 initialized 된 값이라면 수정 가능, 실제 value는 Heap영역에 저장되기 때문
 
