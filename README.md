@@ -15,7 +15,7 @@
 ---
 - [4장. 스트림 소개](Chapter4/스트림소개.md)
   - [빌더 패턴(Builder Pattern) - John Grib](https://johngrib.github.io/wiki/builder-pattern)
-- 5장. 스트림 활용  
+- [5장. 스트림 활용](Chapter5/스트림활용.md)  
 - 6장. 스트림과 데이터 수집  
 - 7장. 병렬 데이터 처리와 성능  
 
