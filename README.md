@@ -17,7 +17,8 @@
   - [빌더 패턴(Builder Pattern)](Chapter4/BuilderPattern/BuilderPattern.md)
 - [5장. 스트림 활용](Chapter5/스트림활용.md)  
 - [6장. 스트림과 데이터 수집](Chapter6/스트림으로_데이터_수집.md)  
-- 7장. 병렬 데이터 처리와 성능  
+- 7장. 병렬 데이터 처리와 성능
+  - [쓰레드풀과 ForkJoinPool - Hama](https://hamait.tistory.com/612)
 
 #### 3부 효과적인 자바 8 프로그래밍  
 ---
