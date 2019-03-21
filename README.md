@@ -24,6 +24,7 @@
 ---
 - 8장. 리팩토링, 테스팅, 디버깅
     - [Debugging Java Streams With IntelliJ - DZone Java](https://dzone.com/articles/debugging-java-streams-with-intellij)
+    - [Java Stream Debugger - JetBrains](https://plugins.jetbrains.com/plugin/9696-java-stream-debugger)
 - 9장. 디폴트 메서드  
 - 10장. null 대신 Optional  
 - 11장. CompletableFuture: 조합할 수 있는 비동기 프로그래밍  
