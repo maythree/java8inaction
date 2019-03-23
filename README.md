@@ -22,7 +22,7 @@
 
 #### 3부 효과적인 자바 8 프로그래밍  
 ---
-- 8장. 리팩토링, 테스팅, 디버깅
+- [8장. 리팩토링, 테스팅, 디버깅](Chapter8/자바8인액션-리팩토링테스팅디버깅.md)
     - [Debugging Java Streams With IntelliJ - DZone Java](https://dzone.com/articles/debugging-java-streams-with-intellij)
     - [Java Stream Debugger - JetBrains](https://plugins.jetbrains.com/plugin/9696-java-stream-debugger)
 - 9장. 디폴트 메서드  
