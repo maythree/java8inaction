@@ -25,7 +25,9 @@
 - [8장. 리팩토링, 테스팅, 디버깅](Chapter8/자바8인액션-리팩토링테스팅디버깅.md)
     - [Debugging Java Streams With IntelliJ - DZone Java](https://dzone.com/articles/debugging-java-streams-with-intellij)
     - [Java Stream Debugger - JetBrains](https://plugins.jetbrains.com/plugin/9696-java-stream-debugger)
-- 9장. 디폴트 메서드  
+- [9장. 디폴트 메서드](Chapter9/디폴트_메서드.md)
+    - [Delegation vs Inheritance in Java](https://www.geeksforgeeks.org/delegation-vs-inheritance-java/)  
+    - [인터페이스 VS 추상클래스](https://hamait.tistory.com/650)  
 - 10장. null 대신 Optional  
 - 11장. CompletableFuture: 조합할 수 있는 비동기 프로그래밍  
 - 12장. 새로운 날짜, 시간 API  
