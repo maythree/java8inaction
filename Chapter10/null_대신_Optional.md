@@ -125,7 +125,7 @@ public String getCarInsuranceName(Optional<Person> person) {
 : 값이 존재할 때 인수로 넘겨준 동작을 실행할 수 있다. 없으면 아무 일도 일어나지 않는다.
   
 * 두 Optional 합치기  
-- isPresent를 이용한 null-safe Method  
+1. isPresent를 이용한 null-safe Method  
 ~~~ java
 if(person.isPresent() && car.isPresent()){
     return Optional.of(findCheapestInsurance(preson.get()), car.get()));
@@ -134,7 +134,7 @@ if(person.isPresent() && car.isPresent()){
 }
 ~~~
   
-- 조건문 없이 nullSafeFindCheapestInsurance() 구현하기  
+2. 조건문 없이 nullSafeFindCheapestInsurance() 구현하기  
 ~~~ java
 public Optional<Insurance> nullSafeFindCheapestInsurance(
                                 Optinoal<Person> person, Optional<Car> car) {
