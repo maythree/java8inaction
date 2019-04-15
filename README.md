@@ -28,7 +28,7 @@
 - [9장. 디폴트 메서드](Chapter9/디폴트_메서드.md)
     - [Delegation vs Inheritance in Java](https://www.geeksforgeeks.org/delegation-vs-inheritance-java/)  
     - [인터페이스 VS 추상클래스](https://hamait.tistory.com/650)  
-- 10장. null 대신 Optional  
+- [10장. null 대신 Optional](Chapter10/null 대신 Optional.md)  
 - 11장. CompletableFuture: 조합할 수 있는 비동기 프로그래밍  
 - 12장. 새로운 날짜, 시간 API  
 
