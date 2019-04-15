@@ -156,7 +156,7 @@ Object value = map.get("key");    //key에 해당하는 값이 없으면 null �
 Optional<Object> value = Optional.ofNullable(map.get("key")); //Optional 객체로 감싸기
 ~~~
   
-* 예외와 Optional
+* 예외와 Optional  
 자바 API는 값을 제공할 수 없을 때 null 반환 대신 예외를 발생시킨다.  
 대표적인 예로 문자열을 정수로 바꾸지 못하면 NumberFormatException을 발생시킨다.  
 이 경우 문자열을 정수 Optional로 반환하는 유틸리티 메서드를 구현하여 사용할 수 있다.  
