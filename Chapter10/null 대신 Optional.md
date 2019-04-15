@@ -44,8 +44,8 @@ public String getCarinsuranceName(Person person) {
 3. Scala: Option[T] 구조 제공
   
 ### 10.2 Optional 클래스 소개
-> Java8은 하스켈과 스칼라의 영향을 받아 Optional<T> 클래스를 이용한다!
-> Optional 클래스는 선택형값을 캡슐화하는 클래스다.
+> Java8은 하스켈과 스칼라의 영향을 받아 Optional<T> 클래스를 이용한다!  
+> Optional 클래스는 선택형값을 캡슐화하는 클래스다.  
 > 값이 있으면 값을 감싸고 값이 없으면 empty메서드로 Optional을 반환한다.
   
 * null 레퍼런스와 Optional.empty()의 차이  
