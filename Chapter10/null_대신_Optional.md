@@ -142,8 +142,8 @@ public Optional<Insurance> nullSafeFindCheapestInsurance(
 }
 ~~~
   
-* 필터로 특정 값 거르기
-**filter** 메서드는
+* 필터로 특정 값 거르기  
+**filter** 메서드는  
 Predicate를 인수로 받아 일치하면 그 값을, 그렇지 않으면 빈 Optional 객체를 반환한다.  
 Optional에 값이 있으면 그 값에 Predicate를 적용한다. 결과가 true면 변화가 없지만 false면 빈 상태가 된다.
   
