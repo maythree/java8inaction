@@ -4,7 +4,7 @@
 - 비동기 작업을 만들고 결과 얻기
 - 비블록 동작으로 생산성 높이기
 - 비동기 API 설계와 구현 
-- 동기 API를 비동기적으로 소비하기
+- 동기 API를 비동기적으로 소비하기
 - 두 개 이상의 비동기 연산을 파이프라인으로 만들고 합치기 
 - 비동기 작업 완료에 대응하기 
   
@@ -254,11 +254,11 @@
 ~~~ 
 
 
-1. thenApply : CompletableFuture가 끝날 때까지 블록하지 않음 
-2. thenCompose : 두 비동기 연상을 파이프라인으로 만들수 있도록 한다. 첫번째 연산읜 결과를 두번째 연산으로 전달 한다. 
-3. thenCombine : 첫번째 CompletableFuture의 동작 완료와 관계없이 두번째 CompletableFuture 를 생할하여 결과를 합침 
+* thenApply : CompletableFuture가 끝날 때까지 블록하지 않음 
+* thenCompose : 두 비동기 연상을 파이프라인으로 만들수 있도록 한다. 첫번째 연산읜 결과를 두번째 연산으로 전달 한다. 
+* thenCombine : 첫번째 CompletableFuture의 동작 완료와 관계없이 두번째 CompletableFuture 를 생할하여 결과를 합침 
    CompletableFuture의 결과가 생성되고 BiFunction으로 합쳐진 다음에 세번째에 CompletableFuture를 얻을 수 있음 
-4. thenAccept : 연산 결과를 소비하는 Consumer를 인수로 받는다. CompletableFuture가 생성한 결과를 어떻게 소비할지 미리 지정했으므로 CompletableFuture<Void>를 반환 한다. 
+* thenAccept : 연산 결과를 소비하는 Consumer를 인수로 받는다. CompletableFuture가 생성한 결과를 어떻게 소비할지 미리 지정했으므로 CompletableFuture<Void>를 반환 한다. 
 
 
 
@@ -343,13 +343,13 @@
     }
 ~~~ 
 
-> allOf 
-  CompletableFuture 배열을 입력으로 받아 CompletableFuture<Void> 를 반환한다.
-  CompletableFuture가 완료되어야 CompletableFuture<Void> 가  완료 된다. 
+* allOf 
+ CompletableFuture 배열을 입력으로 받아 CompletableFuture<Void> 를 반환한다.
+ CompletableFuture가 완료되어야 CompletableFuture<Void> 가  완료 된다. 
 
-> anyOf 
-  CompletableFuture 배열을 입력으로 받아 CompletableFuture<Object> 를 반환한다.
-  CompletableFuture<Object>는 처음으로 완료한 CompletableFuture 값으로 동작을 완료한다. 
+* anyOf 
+ CompletableFuture 배열을 입력으로 받아 CompletableFuture<Object> 를 반환한다.
+ CompletableFuture<Object>는 처음으로 완료한 CompletableFuture 값으로 동작을 완료한다. 
 
     
 
