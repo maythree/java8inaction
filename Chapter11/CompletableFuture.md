@@ -9,12 +9,12 @@
 - 비동기 작업 완료에 대응하기 
   
 ### 11.1 Future 
-: 자바 5부터 미래의 어느 시점에 결과를 얻는 모델에 활용할 수 있도록 future 인터페이스를 제공하고 있다. 
-: 비동기 계산을 모델링 한는데 future를 이용할 수 있으며 future계산이 끝났을때 결과에 접근할 수 있는 레퍼런스를 제공한다. 
+> 자바 5부터 미래의 어느 시점에 결과를 얻는 모델에 활용할 수 있도록 future 인터페이스를 제공하고 있다. 
+> 비동기 계산을 모델링 한는데 future를 이용할 수 있으며 future계산이 끝났을때 결과에 접근할 수 있는 레퍼런스를 제공한다. 
 
 * 동기 API와 비동기 API 
-: 동기 API => 메서드를 호출한 다음에 완료때 까지 기다렸다가 메스드를 반환 호출자는 피호출자의 동작 완료를 기다린다. 이런 상황을 블록호출 이라 한다. 
-: 비동기 API => 메서드가 즉시 반환되며 끝내지 못한 작업을 호출자 스데드와 동기적으로 실행 될 수 있도록 다른 스레드에 할당한다. 이런 상황을 비블록 호출 이라 한다. 
+  동기 API => 메서드를 호출한 다음에 완료때 까지 기다렸다가 메스드를 반환 호출자는 피호출자의 동작 완료를 기다린다. 이런 상황을 블록호출 이라 한다. 
+  비동기 API => 메서드가 즉시 반환되며 끝내지 못한 작업을 호출자 스데드와 동기적으로 실행 될 수 있도록 다른 스레드에 할당한다. 이런 상황을 비블록 호출 이라 한다. 
  
 * 예제 코드
 ~~~ java
@@ -112,27 +112,9 @@
                                                    new Shop("ShopEasy")*/);
 ~~~
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### 11.2 비동기 API 구현 
-
-
-: 변수를 참조할 때마다 null을 확인해야 한다. 이름은 확인을 하지 않지만 없을 수도 있다.  
-: 중첩된 if가 반복되는 패턴이 나타나 가독성이 떨어진다.
+> 변수를 참조할 때마다 null을 확인해야 한다. 이름은 확인을 하지 않지만 없을 수도 있다.  
+> 중첩된 if가 반복되는 패턴이 나타나 가독성이 떨어진다.
   
 * null 때문에 발생하는 문제
 1. 에러의 근원이다.
@@ -152,7 +134,7 @@
 > 값이 있으면 값을 감싸고 값이 없으면 empty메서드로 Optional을 반환한다.
   
 * null 레퍼런스와 Optional.empty()의 차이  
-: null을 참조하려면 NullPointerException이 발생하지만 Optional.empty()는 Optional 객체를 활용할 수 있다.
+  null을 참조하려면 NullPointerException이 발생하지만 Optional.empty()는 Optional 객체를 활용할 수 있다.
   
 ~~~ java
 public class Person {
@@ -165,8 +147,8 @@ public class Insurance {
     public String getName() { return name;}
 }
 ~~~
-: 사람은 차를 소유했을 수도 있고 아닐 수도 있지만 보험의 이름은 반드시 가져야한다.  
-: NullPointerException이 발생해야하는 오류 코드인지, 의도한것인지 의미를 명확히 할 수 있다.  
+> 사람은 차를 소유했을 수도 있고 아닐 수도 있지만 보험의 이름은 반드시 가져야한다.  
+> NullPointerException이 발생해야하는 오류 코드인지, 의도한것인지 의미를 명확히 할 수 있다.  
   
 ### 10.3 Optional 적용 패턴
 * Optional 객체 만들기  
@@ -187,8 +169,8 @@ map 메서드를 사용해 객체의 정보를 추출할 때 null인지 확인�
 Optional<Insurance> optInsurance = Optional.ofNullable(insurance);
 Optional<String> name = optInsurance.map(Insurance::getName);
 ~~~
-: Optional이 값을 포함하면 map의 인수로 제공된 함수가 값을 바꾼다.  
-: Optional이 비어있으면 아무 일도 일어나지 않는다.
+  Optional이 값을 포함하면 map의 인수로 제공된 함수가 값을 바꾼다.  
+  Optional이 비어있으면 아무 일도 일어나지 않는다.
   
 * flatMap으로 Optional 객체 연결  
 **flatMap** 메서드는 이차원 스트림을 일차원 스트림으로 변환한다.  
@@ -200,8 +182,8 @@ Optoinal<String> name =
              .map(Car::getinsurance)
              .map(Insurance::getName);
 ~~~
-: map(Person::getCar) 연산의 결과는 Optional<Optional<Car>> 형식의 객체다.  
-: 이와 같이 함수를 인수로 받아 다른 스트림으로 반환하는 경우 스트림과 같이 flatMap을 사용한다.
+  map(Person::getCar) 연산의 결과는 Optional<Optional<Car>> 형식의 객체다.  
+  이와 같이 함수를 인수로 받아 다른 스트림으로 반환하는 경우 스트림과 같이 flatMap을 사용한다.
   
 - 정상적인 예제  
 ~~~ java
@@ -212,8 +194,8 @@ public String getCarInsuranceName(Optional<Person> person) {
                  .orElse("Unknown");
 }
 ~~~
-: flatMap 연산 수행 시 빈 Optional에 호출하면 아무 일도 일어나지 않는다.  
-: Optional이 Person을 감싸고 있다면 flatMap에 적용된 Function이 Person에 적용된다.
+  flatMap 연산 수행 시 빈 Optional에 호출하면 아무 일도 일어나지 않는다.  
+  Optional이 Person을 감싸고 있다면 flatMap에 적용된 Function이 Person에 적용된다.
   
 * 디폴트 액션과 Optional 언랩  
 1. get()
