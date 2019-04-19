@@ -13,8 +13,8 @@
 > 비동기 계산을 모델링 한는데 future를 이용할 수 있으며 future계산이 끝났을때 결과에 접근할 수 있는 레퍼런스를 제공한다. 
 
 * 동기 API와 비동기 API 
-  동기 API => 메서드를 호출한 다음에 완료때 까지 기다렸다가 메스드를 반환 호출자는 피호출자의 동작 완료를 기다린다. 이런 상황을 블록호출 이라 한다. 
-  비동기 API => 메서드가 즉시 반환되며 끝내지 못한 작업을 호출자 스데드와 동기적으로 실행 될 수 있도록 다른 스레드에 할당한다. 이런 상황을 비블록 호출 이라 한다. 
+- 동기 API : 메서드를 호출한 다음에 완료때 까지 기다렸다가 메스드를 반환 호출자는 피호출자의 동작 완료를 기다린다. 이런 상황을 블록호출 이라 한다. 
+- 비동기 API : 메서드가 즉시 반환되며 끝내지 못한 작업을 호출자 스데드와 동기적으로 실행 될 수 있도록 다른 스레드에 할당한다. 이런 상황을 비블록 호출 이라 한다. 
  
 * 예제 코드
 ~~~ java
@@ -65,26 +65,28 @@
         Future<Double> futurePrice = shop.getPriceAsync("my favorite product");
         long invocationTime = ((System.nanoTime() - start) / 1_000_000);
         System.out.println("Invocation returned after " + invocationTime 
-                                                        + " msecs");
+                                                        + " msecs");  //1
         // Do some more tasks, like querying other shops
         doSomethingElse();
         // while the price of the product is being calculated
         try {
             double price = futurePrice.get();
-            System.out.printf("Price is %.2f%n", price);
+            System.out.printf("Price is %.2f%n", price);  //3 
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }
         long retrievalTime = ((System.nanoTime() - start) / 1_000_000);
-        System.out.println("Price returned after " + retrievalTime + " msecs");
+        System.out.println("Price returned after " + retrievalTime + " msecs"); //4
       }
 
       private static void doSomethingElse() {
-          System.out.println("Doing something else...");
+          System.out.println("Doing something else..."); //2
       }
 
     }
 ~~~
+
+
 
 * 에러 처리 방법 
 ~~~ java
@@ -192,9 +194,7 @@
             return discountCode;
         }
     }
-~~~ 
 
-~~~ java
     public class Discount {
 
         public enum Code {
@@ -227,10 +227,6 @@
     }
 ~~~ 
 
-
-> 병렬 스트림을 이용하면 성능을 쉽게 개선할 수 있음  하지만, 스트림이 사용하는 스레드 풀의 크기가 고정되어 있어서 상점 수가 늘어났을때 처럼 검색 대상이 확장 되었을 때 유연하게 대응할 수 없음 
-> 따라서 CompletableFutture에서 수행하는 태스크를 설정할 수 있는 커스텀 Executor를 정의함으로서 우리의 Cpu 사용을 극대화 할수 있음 
-
 ~~~ java
     public List<String> findPricesFuture(String product) {
         List<CompletableFuture<String>> priceFutures = findPricesStream(product)
@@ -240,23 +236,32 @@
                 .map(CompletableFuture::join)
                 .collect(Collectors.toList());
     }
+~~~ 
 
+~~~ java
     public Stream<CompletableFuture<String>> findPricesStream(String product) {
         return shops.stream()
                 .map(shop -> CompletableFuture.supplyAsync(() -> shop.getPrice(product), executor))
                 .map(future -> future.thenApply(Quote::parse))
                 .map(future -> future.thenCompose(quote -> CompletableFuture.supplyAsync(() -> Discount.applyDiscount(quote), executor)));
     }
-~~~ 
+~~~
+
+> 병렬 스트림을 이용하면 성능을 쉽게 개선할 수 있음  하지만, 스트림이 사용하는 스레드 풀의 크기가 고정되어 있어서 상점 수가 늘어났을때 처럼 검색 대상이 확장 되었을 때 유연하게 대응할 수 없음 
+> 따라서 CompletableFutture에서 수행하는 태스크를 설정할 수 있는 커스텀 Executor를 정의함으로서 우리의 Cpu 사용을 극대화 할수 있음 
+
+
 * thenApply : CompletableFuture가 끝날 때까지 블록하지 않음 
-* thenCompose : 두 비동기 연상을 파이프라인으로 만들수 있도록 한다. 첫번째 연산읜 결과를 두번째 연산으로 전달 한다. 
-* thenCombine : 첫번째 CompletableFuture의 동작 완료와 관계없이 두번째 CompletableFuture 를 생할하여 결과를 합침 
-   CompletableFuture의 결과가 생성되고 BiFunction으로 합쳐진 다음에 세번째에 CompletableFuture를 얻을 수 있음 
+* thenCompose : 두 비동기 연상을 파이프라인으로 만들수 있도록 한다. 첫번째 연산 결과를 두번째 연산으로 전달 한다. 
+* thenCombine : 첫번째 CompletableFuture의 동작 완료와 관계없이 두번째 CompletableFuture 를 생성하여 결과를 합침 
+   (CompletableFuture의 결과가 생성되고 BiFunction으로 합쳐진 다음에 세번째에 CompletableFuture를 얻을 수 있음) 
 * thenAccept : 연산 결과를 소비하는 Consumer를 인수로 받는다. CompletableFuture가 생성한 결과를 어떻게 소비할지 미리 지정했으므로 CompletableFuture<Void>를 반환 한다. 
 
 
 * 독릭적인 두개의 CompletableFuture 합치기
+
 ~~~ java
+    //유로 가격을 달러로 보여줘야함 
     public List<String> findPricesInUSD(String product) {
         List<CompletableFuture<Double>> priceFutures = new ArrayList<>();
         for (Shop shop : shops) {
@@ -336,11 +341,11 @@
     }
 ~~~ 
 
-* allOf 
+>  allOf 
  CompletableFuture 배열을 입력으로 받아 CompletableFuture<Void> 를 반환한다.
  CompletableFuture가 완료되어야 CompletableFuture<Void> 가  완료 된다. 
 
-* anyOf 
+> anyOf 
  CompletableFuture 배열을 입력으로 받아 CompletableFuture<Object> 를 반환한다.
  CompletableFuture<Object>는 처음으로 완료한 CompletableFuture 값으로 동작을 완료한다. 
 
