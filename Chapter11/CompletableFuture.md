@@ -341,13 +341,13 @@
     }
 ~~~ 
 
->  allOf 
- CompletableFuture 배열을 입력으로 받아 CompletableFuture<Void> 를 반환한다.
- CompletableFuture가 완료되어야 CompletableFuture<Void> 가  완료 된다. 
+* allOf 
+CompletableFuture 배열을 입력으로 받아 CompletableFuture<Void> 를 반환한다.
+CompletableFuture가 완료되어야 CompletableFuture<Void> 가  완료 된다. 
 
-> anyOf 
- CompletableFuture 배열을 입력으로 받아 CompletableFuture<Object> 를 반환한다.
- CompletableFuture<Object>는 처음으로 완료한 CompletableFuture 값으로 동작을 완료한다. 
+* anyOf 
+CompletableFuture 배열을 입력으로 받아 CompletableFuture<Object> 를 반환한다.
+CompletableFuture<Object>는 처음으로 완료한 CompletableFuture 값으로 동작을 완료한다. 
 
     
 
